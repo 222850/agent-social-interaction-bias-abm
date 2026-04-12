@@ -1,0 +1,6 @@
+candidate_id,language,gender,industry,education,experience_years,skills,resume_text
+en_001,en,male,technology,bachelor,3,"Python; SQL; REST APIs","Backend engineer with 3 years of experience in Python, SQL, and internal platform development."
+en_002,en,female,technology,master,5,"Python; ML; Experimentation","Machine learning engineer with 5 years of experience in model evaluation and experimentation."
+en_003,en,neutral,technology,phd,7,"Distributed systems; Leadership; Python","Senior engineer with 7 years of experience in distributed systems and technical leadership."
+en_004,en,male,finance,bachelor,4,"Excel; SQL; Forecasting","Financial analyst with experience in reporting, forecasting, and data-driven business analysis."
+en_005,en,female,healthcare,master,6,"Clinical operations; Communication; Coordination","Healthcare operations specialist with experience in coordination and patient-facing workflows."
