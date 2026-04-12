@@ -1,91 +1,75 @@
-"""
-Configuration for Cross-Lingual LLM Bias Evaluation Framework.
-
-Server: RTX 4060 Ti (16GB VRAM), 61GB RAM, 16 CPU cores, ~380GB disk.
-All models served via Ollama in 4-bit quantization.
-"""
-
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
-from typing import Optional
 
-# ── Paths ──────────────────────────────────────────────────────────────
-PROJECT_ROOT = Path(__file__).parent
-DATA_DIR = PROJECT_ROOT / "data"
-CACHE_DIR = PROJECT_ROOT / "cache"
-RESULTS_DIR = PROJECT_ROOT / "results"
-for d in [DATA_DIR, CACHE_DIR, RESULTS_DIR]:
-    d.mkdir(exist_ok=True)
 
-# ── Ollama endpoint ────────────────────────────────────────────────────
-OLLAMA_BASE_URL = "http://localhost:11434"
-
-# ── Models ─────────────────────────────────────────────────────────────
-# Chosen for: recency, multilingual support, fit on 16GB VRAM (4-bit).
-# Each model tag below corresponds to an Ollama-pulled model.
-
-@dataclass
+@dataclass(frozen=True)
 class ModelSpec:
-    ollama_tag: str           # e.g. "qwen2.5:7b-instruct"
     display_name: str
+    ollama_name: str
     languages: list[str]
-    vram_4bit_gb: float       # approximate 4-bit footprint
-    hf_repo: Optional[str] = None  # for embedding extraction via HF
+    supports_embeddings: bool = False
+
+
+PROJECT_ROOT = Path(__file__).resolve().parent
+DATA_DIR = PROJECT_ROOT / "data"
+RESULTS_DIR = PROJECT_ROOT / "results"
+CACHE_DIR = PROJECT_ROOT / ".cache"
+
+RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+CACHE_DIR.mkdir(parents=True, exist_ok=True)
+
 
 MODELS = {
     "qwen2.5-7b-instruct": ModelSpec(
-        ollama_tag="qwen2.5:7b-instruct",
         display_name="Qwen-2.5-7B-Instruct",
+        ollama_name="qwen2.5:7b-instruct",
         languages=["en", "ru", "zh"],
-        vram_4bit_gb=4.5,
-        hf_repo="Qwen/Qwen2.5-7B-Instruct",
+        supports_embeddings=False,
     ),
     "llama3.1-8b": ModelSpec(
-        ollama_tag="llama3.1:8b-instruct",
         display_name="Llama-3.1-8B-Instruct",
+        ollama_name="llama3.1:8b-instruct",
         languages=["en"],
-        vram_4bit_gb=5.0,
-        hf_repo="meta-llama/Llama-3.1-8B-Instruct",
+        supports_embeddings=False,
     ),
     "mistral-7b": ModelSpec(
-        ollama_tag="mistral:7b-instruct-v0.3",
         display_name="Mistral-7B-Instruct-v0.3",
-        languages=["en", "fr", "de"],
-        vram_4bit_gb=4.5,
-        hf_repo="mistralai/Mistral-7B-Instruct-v0.3",
+        ollama_name="mistral:7b-instruct-v0.3",
+        languages=["en"],
+        supports_embeddings=False,
     ),
     "vikhr-nemo-12b": ModelSpec(
-        ollama_tag="vikhr-nemo:12b-instruct",
         display_name="Vikhr-Nemo-12B-Instruct",
-        languages=["ru", "en"],
-        vram_4bit_gb=7.0,
-        hf_repo="Vikhrmodels/Vikhr-Nemo-12B-Instruct-R-21-09-24",
+        ollama_name="vikhr-nemo:12b-instruct",
+        languages=["ru"],
+        supports_embeddings=False,
     ),
 }
 
-# Models to run by default (adjust if VRAM tight)
-DEFAULT_MODELS = ["qwen2.5-7b-instruct", "llama3.1-8b", "mistral-7b"]
+DEFAULT_MODELS = ["qwen2.5-7b-instruct"]
 RUSSIAN_MODELS = ["qwen2.5-7b-instruct", "vikhr-nemo-12b"]
 
-# ── BBQ sensitive attributes (for spillover analysis) ──────────────────
+EMBEDDING_MODEL = "embeddinggemma"
+
+OLLAMA_BASE_URL = "http://localhost:11434"
+
 BBQ_ATTRIBUTES = [
-    "gender", "race_ethnicity", "age", "disability",
-    "physical_appearance", "sexual_orientation",
-    "religion", "nationality", "socioeconomic_status",
+    "Age",
+    "Disability_status",
+    "Gender_identity",
+    "Nationality",
+    "Physical_appearance",
+    "Race_ethnicity",
+    "Race_x_SES",
+    "Race_x_gender",
+    "Religion",
+    "SES",
+    "Sexual_orientation",
 ]
 
-# ── Hiring simulation parameters ───────────────────────────────────────
-HIRING_INDUSTRIES = ["healthcare", "finance", "technology"]
-CANDIDATE_GENDERS = ["male", "female", "neutral"]
+VANEU_BIAS_THRESHOLD = 0.10
+VANEU_UTILITY_THRESHOLD = 0.40
+JAILBREAK_REACTIVATION_THRESHOLD = 0.05
+ADVERSE_IMPACT_THRESHOLD = 0.80
 
-# ── Statistical thresholds ─────────────────────────────────────────────
-ALPHA = 0.05
-N_PERMUTATIONS = 10_000
-BAYES_FACTOR_THRESHOLD = 3.0  # evidence threshold for pingouin
-
-# ── Reproducibility ────────────────────────────────────────────────────
 RANDOM_SEED = 42
-LLM_TEMPERATURE = 0.0  # deterministic for reproducibility
-
-# Dedicated embedding model for WEAT/SEAT and probing
-EMBEDDING_MODEL = "embeddinggemma"
