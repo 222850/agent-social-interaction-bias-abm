@@ -1,0 +1,5 @@
+test,language,model,effect_size_d,p_value,interpretation,model_key,within_male_sim,within_female_sim,cross_gender_sim,clustering_gap
+WEAT_career_family,en,gigachat_pro,-0.0954097968061645,0.56,"Female→Career, Male→Family",gigachat_pro,,,,
+SEAT_occupations,en,gigachat_pro,,,,gigachat_pro,0.7791151902808879,0.7902695760090179,0.7424277514808857,0.04226463166406724
+WEAT_career_family,ru,gigachat_pro,0.16314430013457618,0.354,"Male→Career, Female→Family",gigachat_pro,,,,
+SEAT_occupations,ru,gigachat_pro,,,,gigachat_pro,0.7723825114696115,0.7810208742899193,0.7377457515368431,0.03895594134292235

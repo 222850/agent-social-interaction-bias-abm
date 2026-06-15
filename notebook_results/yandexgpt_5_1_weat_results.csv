@@ -1,0 +1,5 @@
+test,language,model,effect_size_d,p_value,interpretation,model_key,provider_model,embedding_backend,yandex_embed_model,gigachat_embed_model,ollama_embed_model,within_male_sim,within_female_sim,cross_gender_sim,clustering_gap
+WEAT_career_family,en,yandexgpt_5_1,-0.0954097968061645,0.56,"Female→Career, Male→Family",yandexgpt_5_1,yandexgpt-5.1,yandex_rest,text-search-doc/latest,Embeddings,,,,,
+SEAT_occupations,en,yandexgpt_5_1,,,,yandexgpt_5_1,yandexgpt-5.1,yandex_rest,text-search-doc/latest,Embeddings,,0.7791151902808879,0.7902695760090179,0.7424277514808857,0.04226463166406724
+WEAT_career_family,ru,yandexgpt_5_1,0.16314430013457618,0.354,"Male→Career, Female→Family",yandexgpt_5_1,yandexgpt-5.1,yandex_rest,text-search-doc/latest,Embeddings,,,,,
+SEAT_occupations,ru,yandexgpt_5_1,,,,yandexgpt_5_1,yandexgpt-5.1,yandex_rest,text-search-doc/latest,Embeddings,,0.7723825114696115,0.7810208742899193,0.7377457515368431,0.03895594134292235

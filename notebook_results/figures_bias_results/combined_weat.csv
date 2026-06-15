@@ -1,0 +1,9 @@
+test,language,model,effect_size_d,p_value,interpretation,model_key,within_male_sim,within_female_sim,cross_gender_sim,clustering_gap,source_file,model_language,model_language_test
+WEAT_career_family,en,gigachat_api,0.2119590778648315,0.299,"Male→Career, Female→Family",gigachat_api,,,,,gigachat_api_weat_results.csv,gigachat_api / en,gigachat_api / en / WEAT_career_family
+SEAT_occupations,en,gigachat_api,,,,gigachat_api,0.8388216968699178,0.8507601226494587,0.8008277974656951,0.043963112293993,gigachat_api_weat_results.csv,gigachat_api / en,gigachat_api / en / SEAT_occupations
+WEAT_career_family,ru,gigachat_api,0.2527018406082745,0.274,"Male→Career, Female→Family",gigachat_api,,,,,gigachat_api_weat_results.csv,gigachat_api / ru,gigachat_api / ru / WEAT_career_family
+SEAT_occupations,ru,gigachat_api,,,,gigachat_api,0.8805270742583485,0.8898408098859922,0.8570886097696562,0.0280953323025141,gigachat_api_weat_results.csv,gigachat_api / ru,gigachat_api / ru / SEAT_occupations
+WEAT_career_family,en,yandexgpt_api,-0.0954097968061645,0.56,"Female→Career, Male→Family",yandexgpt_api,,,,,yandexgpt_api_weat_results.csv,yandexgpt_api / en,yandexgpt_api / en / WEAT_career_family
+SEAT_occupations,en,yandexgpt_api,,,,yandexgpt_api,0.7791151902808879,0.7902695760090179,0.7424277514808857,0.0422646316640672,yandexgpt_api_weat_results.csv,yandexgpt_api / en,yandexgpt_api / en / SEAT_occupations
+WEAT_career_family,ru,yandexgpt_api,0.1631443001345761,0.354,"Male→Career, Female→Family",yandexgpt_api,,,,,yandexgpt_api_weat_results.csv,yandexgpt_api / ru,yandexgpt_api / ru / WEAT_career_family
+SEAT_occupations,ru,yandexgpt_api,,,,yandexgpt_api,0.7723825114696115,0.7810208742899193,0.7377457515368431,0.0389559413429223,yandexgpt_api_weat_results.csv,yandexgpt_api / ru,yandexgpt_api / ru / SEAT_occupations

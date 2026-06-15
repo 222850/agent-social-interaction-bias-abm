@@ -1,0 +1,19 @@
+model_key,provider_model,ok,elapsed_sec,answer_preview,error_type,error_message
+gigachat_lite,,False,0.0,,KeyError,'gigachat_lite'
+gigachat_pro,GigaChat-2-Pro,True,0.25,Ok,,
+gigachat_max,GigaChat-2-Max,True,0.35,ok,,
+gigachat_legacy_lite,,False,0.0,,KeyError,'gigachat_legacy_lite'
+gigachat_legacy_pro,,False,0.0,,KeyError,'gigachat_legacy_pro'
+gigachat_legacy_max,,False,0.0,,KeyError,'gigachat_legacy_max'
+yandexgpt_5_lite,yandexgpt-5-lite,True,0.22,"ok
+",,
+yandexgpt_5_pro,yandexgpt-5-pro,True,0.22,"ok
+",,
+yandexgpt_5_1,yandexgpt-5.1,True,0.19,ok,,
+aliceai_llm,aliceai-llm,True,0.27, ok,,
+yandex_gpt_oss_20b,gpt-oss-20b,True,0.62,ok,,
+yandex_qwen36_35b,qwen3.6-35b-a3b,True,0.87,None,,
+yandex_deepseek_v32,deepseek-v32,True,3.68,ok,,
+yandex_gpt_oss_120b,gpt-oss-120b,True,0.41,ok,,
+yandex_qwen3_235b,qwen3-235b-a22b-fp8,True,0.4,ok,,
+yandex_gemma_3_27b,gemma-3-27b-it,False,0.07,,HTTPError,403 Client Error: Forbidden for url: https://llm.api.cloud.yandex.net/v1/chat/completions

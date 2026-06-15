@@ -1,0 +1,3 @@
+model,language,mean_gender_ratio,male_dominant_pct,female_dominant_pct,neutral_pct,gendered_response_pct,expressed_bias,model_key
+yandexgpt_5_1,en,0.36666666666666664,0.13333333333333333,0.4,0.4666666666666667,0.5333333333333333,-0.13333333333333336,yandexgpt_5_1
+yandexgpt_5_1,ru,0.8666666666666667,0.8666666666666667,0.13333333333333333,0.0,1.0,0.3666666666666667,yandexgpt_5_1
